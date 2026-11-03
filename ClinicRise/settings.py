@@ -30,7 +30,11 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-u_3yh_n8ks89400t%guy22hs_=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+#ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -50,18 +54,18 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # ClinicRise apps
-    'authentication.apps.AuthenticationConfig',
-    'practices.apps.PracticesConfig',
-    'websites.apps.WebsitesConfig',
-    'leads.apps.LeadsConfig',
-    'bookings.apps.BookingsConfig',
-    'billing.apps.BillingConfig',
-    'analytics.apps.AnalyticsConfig',
-    'security.apps.SecurityConfig',
-    'gbp.apps.GbpConfig',
-    'whatsapp.apps.WhatsappConfig',
-    'patients.apps.PatientsConfig',
-    'reports.apps.ReportsConfig',
+    'authentication',
+    'practices',
+    'websites',
+    'leads',
+    'bookings',
+    'billing',
+    'analytics',
+    'security',
+    'gbp',
+    'whatsapp',
+    'patients',
+    'reports',
 ]
 
 MIDDLEWARE = [
@@ -222,7 +226,7 @@ SIMPLE_JWT = {
 # CORS Configuration
 CORS_ALLOW_ALL_ORIGINS = DEBUG
 CORS_ALLOWED_ORIGINS = [
-    origin.strip() for origin in os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000').split(',') if origin.strip()
+    origin.strip() for origin in os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:8000').split(',') if origin.strip()
 ]
 
 
