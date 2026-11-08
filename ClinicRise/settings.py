@@ -223,6 +223,11 @@ SIMPLE_JWT = {
 
 # CORS Configuration
 CORS_ALLOW_ALL_ORIGINS = DEBUG
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip() for origin in os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',') if origin.strip()
+]
+# Trust nginx's X-Forwarded-Proto so Django knows the request came in over HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CORS_ALLOWED_ORIGINS = [
     origin.strip() for origin in os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:8000').split(',') if origin.strip()
 ]
